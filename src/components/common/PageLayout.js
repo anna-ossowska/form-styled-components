@@ -8,6 +8,7 @@ const Content = styled.main`
   padding: 0 16px;
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
+  text-align: justify;
 
   h1,
   h2,

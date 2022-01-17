@@ -60,7 +60,7 @@ const Link = ({ isActive, children, ...props }) => {
 };
 
 const StyledLink = styled(Link)`
-  color: #4f4e4e;
+  color: black;
   text-decoration: none;
   padding: 4px 8px;
   display: block;
