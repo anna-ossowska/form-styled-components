@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { PageLayout, Input, PasswordInput, Button } from 'components/common';
+import {
+  PageLayout,
+  Input,
+  PasswordInput,
+  Button,
+  Spinner,
+} from 'components/common';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -55,20 +61,24 @@ const Login = () => {
     <PageLayout>
       <h2>Login</h2>
       <Form onSubmit={submitHandler}>
-        <>
-          <Input
-            name="username"
-            placeholder="Username"
-            type="text"
-            value={formFields.username}
-            onChange={onChangeInputHandler}
-          />
-          <PasswordInput
-            name="password"
-            value={formFields.password}
-            onChange={onChangeInputHandler}
-          />
-        </>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <>
+            <Input
+              name="username"
+              placeholder="Username"
+              type="text"
+              value={formFields.username}
+              onChange={onChangeInputHandler}
+            />
+            <PasswordInput
+              name="password"
+              value={formFields.password}
+              onChange={onChangeInputHandler}
+            />
+          </>
+        )}
         <Button type="submit" disabled={isLoading}>
           Login
         </Button>
