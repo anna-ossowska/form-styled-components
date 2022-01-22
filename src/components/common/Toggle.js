@@ -6,7 +6,7 @@ const ToggleWrapper = styled.div`
   min-width: 50px;
   height: 25px;
   border-radius: 25px;
-  border: 1px solid black;
+  border: 1px solid ${(props) => (props.isActive ? 'white' : 'black')};
   margin: auto;
   margin-left: 1rem;
   display: flex;
@@ -24,9 +24,9 @@ const Notch = styled.div`
   transform: translateX(${(props) => (props.isActive ? '26px' : '1px')});
 `;
 
-export const Toggle = ({ isActive }) => {
+export const Toggle = ({ isActive, onToggle }) => {
   return (
-    <ToggleWrapper>
+    <ToggleWrapper isActive={isActive} onClick={onToggle}>
       <Notch isActive={isActive} />
     </ToggleWrapper>
   );

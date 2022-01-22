@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import { Link as ReactRouterDomLink, useLocation } from 'react-router-dom';
 import { Toggle } from 'components/common';
 
@@ -61,7 +61,7 @@ const Link = ({ isActive, children, ...props }) => {
 };
 
 const StyledLink = styled(Link)`
-  color: black;
+  color: ${(props) => (props.$isToggleActive ? 'white' : 'black')};
   text-decoration: none;
   padding: 4px 8px;
   display: block;
@@ -74,6 +74,7 @@ const StyledLink = styled(Link)`
 export const Header = () => {
   const { pathname } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { id, setTheme } = useContext(ThemeContext);
 
   return (
     <HeaderWrapper>
@@ -83,13 +84,21 @@ export const Header = () => {
         <div />
       </MobileMenuIcon>
       <Menu open={menuOpen}>
-        <StyledLink to="/" isActive={pathname === '/'}>
+        <StyledLink
+          to="/"
+          isActive={pathname === '/'}
+          $isToggleActive={id === 'dark'}
+        >
           Home
         </StyledLink>
-        <StyledLink to="/login" isActive={pathname === '/login'}>
+        <StyledLink
+          to="/login"
+          isActive={pathname === '/login'}
+          $isToggleActive={id === 'dark'}
+        >
           Login
         </StyledLink>
-        <Toggle />
+        <Toggle isActive={id === 'dark'} onToggle={setTheme} />
       </Menu>
     </HeaderWrapper>
   );
