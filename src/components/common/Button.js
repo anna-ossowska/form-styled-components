@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
+  cursor: pointer;
   color: white;
-  background: ${(props) => (props.secondary ? 'black' : '#f8049c')};
-  font-weight: bold;
+  background: ${(props) => (props.secondary ? '#7d7d7d' : 'black')};
   ${(props) =>
     props.large
       ? css`

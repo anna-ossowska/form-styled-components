@@ -4,6 +4,9 @@ import { Input } from './Input';
 
 const PasswordInputWrapper = styled.div`
   display: flex;
+  ~ div {
+    margin-bottom: 8px;
+  }
 `;
 
 const Text = styled.div`
