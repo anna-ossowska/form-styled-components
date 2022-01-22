@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 export const Button = styled.button`
   cursor: pointer;
   color: white;
-  background: ${(props) => (props.secondary ? '#7d7d7d' : 'black')};
+  background: ${(props) =>
+    props.secondary ? props.theme.secondaryColor : 'black'};
   ${(props) =>
     props.large
       ? css`

@@ -21,7 +21,7 @@ const Form = styled.form`
   .altText {
     text-align: center;
     margin: 10px 0;
-    color: #7d7d7d;
+    color: ${(props) => props.theme.secondaryColor};
     font-size: 0.9em;
   }
 `;

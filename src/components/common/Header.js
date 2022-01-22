@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link as ReactRouterDomLink, useLocation } from 'react-router-dom';
+import { Toggle } from 'components/common';
 
 const HeaderWrapper = styled.header`
   height: 60px;
@@ -10,7 +11,7 @@ const HeaderWrapper = styled.header`
   padding: 0 16px;
   position: fixed;
   top: 0;
-  background: #fdd54f;
+  background: ${(props) => props.theme.primaryColor};
 `;
 
 const Menu = styled.nav`
@@ -22,7 +23,7 @@ const Menu = styled.nav`
   left: 0;
   padding: 8px;
   box-sizing: border-box;
-  border-bottom: 2px solid #fdd54f;
+  border-bottom: 2px solid ${(props) => props.theme.primaryColor};
   background: white;
 
   @media only screen and (min-width: 768px) {
@@ -88,6 +89,7 @@ export const Header = () => {
         <StyledLink to="/login" isActive={pathname === '/login'}>
           Login
         </StyledLink>
+        <Toggle />
       </Menu>
     </HeaderWrapper>
   );
