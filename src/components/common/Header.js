@@ -11,7 +11,7 @@ const HeaderWrapper = styled.header`
   padding: 0 16px;
   position: fixed;
   top: 0;
-  background: ${(props) => props.theme.primaryColor};
+  background: ${(props) => props.theme.headerBackground};
 `;
 
 const Menu = styled.nav`
@@ -23,8 +23,8 @@ const Menu = styled.nav`
   left: 0;
   padding: 8px;
   box-sizing: border-box;
-  border-bottom: 2px solid ${(props) => props.theme.primaryColor};
-  background: white;
+  border-bottom: 2px solid ${(props) => props.theme.headerBackground};
+  background: ${(props) => props.theme.bodyBackgroundColor};
 
   @media only screen and (min-width: 768px) {
     display: flex;
@@ -46,7 +46,7 @@ const MobileMenuIcon = styled.div`
 
   > div {
     height: 4px;
-    background: #4f4e4e;
+    background: ${(props) => props.theme.bodyFontColor};
     margin: 5px 0;
     width: 100%;
   }
@@ -61,7 +61,7 @@ const Link = ({ isActive, children, ...props }) => {
 };
 
 const StyledLink = styled(Link)`
-  color: ${(props) => (props.$isToggleActive ? 'white' : 'black')};
+  color: ${(props) => props.theme.bodyFontColor};
   text-decoration: none;
   padding: 4px 8px;
   display: block;
@@ -84,18 +84,10 @@ export const Header = () => {
         <div />
       </MobileMenuIcon>
       <Menu open={menuOpen}>
-        <StyledLink
-          to="/"
-          isActive={pathname === '/'}
-          $isToggleActive={id === 'dark'}
-        >
+        <StyledLink to="/" isActive={pathname === '/'}>
           Home
         </StyledLink>
-        <StyledLink
-          to="/login"
-          isActive={pathname === '/login'}
-          $isToggleActive={id === 'dark'}
-        >
+        <StyledLink to="/login" isActive={pathname === '/login'}>
           Login
         </StyledLink>
         <Toggle isActive={id === 'dark'} onToggle={setTheme} />
